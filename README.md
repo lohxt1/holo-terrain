@@ -3,6 +3,13 @@
 <h1 align="center">Holo-terrain</h1>
 </p>
 
+<p align="center">
+  <br />
+  <br />
+<img align="center" src="https://lohxt1.github.io/_assets/holoterrain.png" alt="holoterrain"/><br/>
+</p>
+
+
 ## About The Project
 
 A 3D terrain block using a custom FBM shader and some postprocessing.
@@ -28,9 +35,3 @@ $ npm install
 # STEP 3: Running the app in dev mode
 $ npm run dev
 ```
-
-<p align="center">
-  <br />
-  <br />
-<img align="center" src="https://lohxt1.github.io/_assets/holoterrain.png" alt="holoterrain"/><br/>
-</p>
