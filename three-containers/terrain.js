@@ -4,12 +4,7 @@ import { Canvas } from "@react-three/fiber";
 import StatsUtils from "../three-components/stats";
 import Controls from "../three-components/controls";
 import TerrainBlock from "../three-components/terrain";
-import {
-  EffectComposer,
-  DepthOfField,
-  Noise,
-  Bloom,
-} from "@react-three/postprocessing";
+import { EffectComposer, Bloom } from "@react-three/postprocessing";
 
 const near = 0.1;
 const far = 10000;
@@ -20,7 +15,7 @@ const Terrain = (props) => {
   return (
     <>
       <Canvas
-        resize={{ scroll: false }}
+        // resize={{ scroll: false }}
         camera={{
           zoom: 1.1,
           near,
@@ -39,23 +34,33 @@ const Terrain = (props) => {
           position: "fixed",
           // filter: 'invert(1)'
         }}
-        orthographic
+        // camera={{
+        //   fov: 100,
+        //   position: [200, 200, 200],
+        // }}
+        // style={{
+        //   height: "100%",
+        //   width: "100%",
+        //   background: "#000",
+        //   position: "fixed",
+        //   // filter: 'invert(1)'
+        // }}
+        // orthographic
       >
         <TerrainBlock position={[0, 0, 0]} />
         <ambientLight color={0xffffff} intensity={1} />
         <Suspense fallback={null}>
           <EffectComposer>
-            <DepthOfField
+            {/* <DepthOfField
               focusDistance={0}
               focalLength={0.02}
               bokehScale={0.5}
               height={1000}
-            />
+            /> */}
             <Bloom
               luminanceThreshold={0}
               luminanceSmoothing={0.1}
-              height={700}
-              intensity={0.5}
+              intensity={1.0}
             />
             {/* <Noise opacity={0.5} /> */}
           </EffectComposer>
