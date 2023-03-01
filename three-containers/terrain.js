@@ -4,8 +4,12 @@ import { Canvas } from "@react-three/fiber";
 import StatsUtils from "../three-components/stats";
 import Controls from "../three-components/controls";
 import TerrainBlock from "../three-components/terrain";
-
-const Bloom = lazy(() => import("../three-shaders/bloom"));
+import {
+  EffectComposer,
+  DepthOfField,
+  Noise,
+  Bloom,
+} from "@react-three/postprocessing";
 
 const near = 0.1;
 const far = 10000;
@@ -40,7 +44,21 @@ const Terrain = (props) => {
         <TerrainBlock position={[0, 0, 0]} />
         <ambientLight color={0xffffff} intensity={1} />
         <Suspense fallback={null}>
-          <Bloom intensity={0.5} />
+          <EffectComposer>
+            <DepthOfField
+              focusDistance={0}
+              focalLength={0.02}
+              bokehScale={0.5}
+              height={1000}
+            />
+            <Bloom
+              luminanceThreshold={0}
+              luminanceSmoothing={0.1}
+              height={700}
+              intensity={0.5}
+            />
+            {/* <Noise opacity={0.5} /> */}
+          </EffectComposer>
         </Suspense>
         <Suspense fallback={null}>
           {/* <StatsUtils /> */}
